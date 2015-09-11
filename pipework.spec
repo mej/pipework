@@ -1,7 +1,10 @@
+%{expand:%%global datestamp %(date '+%Y%m%d')}
+%{expand:%%global gitversion %(git describe --dirty | tr -d '\012' | sed -e 's/^[^-]*-//;s/-/./g;s/dirty/1/')}
+
 Summary: Software-Defined Networking for Linux Containers
 Name: pipework
-Version: 20150911
-Release: 1.mej%{?dist}
+Version: 0.0.1.%{datestamp}
+Release: 0.%{gitversion}.mej%{?dist}
 License: Apache License, Version 2.0
 Group: Applications/System
 URL: https://github.com/mej/pipework
@@ -33,7 +36,7 @@ test -n "%{buildroot}" && %{__rm} -rf %{buildroot}
 
 
 %changelog
-* Fri Sep 11 2015 Michael Jennings <mej@lbl.gov> - 20150911
+* Fri Sep 11 2015 Michael Jennings <mej@lbl.gov> - 0.0.1.20150911
 - Rewrote spec file.
 * Fri Jan 23 2015 Oleg Gashev <oleg@gashev.net> - 20150123
 - Initial package.
